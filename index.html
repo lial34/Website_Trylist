@@ -1,0 +1,208 @@
+<!doctype html>
+
+<html>
+  <header>
+    <meta charset="UTF-8" />
+    <title>Adult Cloud</title>
+
+    <style>
+      .title_1_1 {
+        font-family: "Noto Sans";
+        font-weight: bold;
+        font-size: 90px;
+        font-style: inherit;
+        margin-left: 180px;
+        text-align: left;
+      }
+      .title_1_2 {
+        font-family: "Noto Sans";
+        font-weight: lighter;
+        font-size: 70px;
+        font-style: inherit;
+        margin-left: 180px;
+        text-align: left;
+      }
+
+      .text_1 {
+        font-family: "Google Sans";
+        font-weight: inherit;
+        font-size: 20px;
+      }
+
+      .background_1_1 {
+        background: linear-gradient(270deg, #ffffff, #81ccff, #ffffff);
+        background-size: 600% 600%;
+
+        margin-right: 0px;
+        margin-left: 0px;
+        margin-top: 0px;
+
+        width: 100%;
+        height: 980px;
+
+        -webkit-animation: AnimationName 30s ease infinite;
+        -moz-animation: AnimationName 30s ease infinite;
+        animation: AnimationName 30s ease infinite;
+      }
+      .background_1_2 {
+        background-color: whitesmoke;
+        background-size: 100% 1080px;
+      }
+
+      @-webkit-keyframes AnimationName {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @-moz-keyframes AnimationName {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes AnimationName {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .custom-button {
+        width: 130px;
+        height: 40px;
+        color: #fff;
+        border-radius: 5px;
+        padding: 10px 25px;
+        font-family: "Lato", sans-serif;
+        font-weight: 500;
+        background: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        box-shadow:
+          inset 2px 2px 2px 0px rgba(255, 255, 255, 0.5),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.1),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.1);
+        outline: none;
+      }
+
+      .butten_1_1 {
+        background: rgb(95, 169, 255);
+        background: radial-gradient(
+          circle,
+          rgb(159, 209, 255) 0%,
+          rgb(110, 168, 255) 100%
+        );
+        line-height: 42px;
+        margin-top: 30px;
+        margin-left: 180px;
+        text-align: center;
+        padding: 0;
+        border: none;
+      }
+      .butten_1_1 span {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      .butten_1_1:before,
+      .butten_1_1:after {
+        position: absolute;
+        content: "";
+        height: 0%;
+        width: 1px;
+        box-shadow:
+          -1px -1px 20px 0px rgba(255, 255, 255, 1),
+          -4px -4px 5px 0px rgba(255, 255, 255, 1),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+      }
+      .butten_1_1:before {
+        right: 0;
+        top: 0;
+        transition: all 500ms ease;
+      }
+      .butten_1_1:after {
+        left: 0;
+        bottom: 0;
+        transition: all 500ms ease;
+      }
+      .butten_1_1:hover {
+        background: transparent;
+        color: #000000;
+        box-shadow: none;
+      }
+      .butten_1_1:hover:before {
+        transition: all 500ms ease;
+        height: 100%;
+      }
+      .butten_1_1:hover:after {
+        transition: all 500ms ease;
+        height: 100%;
+      }
+      .butten_1_1 span:before,
+      .butten_1_1 span:after {
+        position: absolute;
+        content: "";
+        box-shadow:
+          -1px -1px 20px 0px rgba(255, 255, 255, 1),
+          -4px -4px 5px 0px rgba(255, 255, 255, 1),
+          7px 7px 20px 0px rgba(0, 0, 0, 0.4),
+          4px 4px 5px 0px rgba(0, 0, 0, 0.3);
+      }
+      .butten_1_1 span:before {
+        left: 0;
+        top: 0;
+        width: 0%;
+        height: 0.5px;
+        transition: all 500ms ease;
+      }
+      .butten_1_1 span:after {
+        right: 0;
+        bottom: 0;
+        width: 0%;
+        height: 0.5px;
+        transition: all 500ms ease;
+      }
+      .butten_1_1 span:hover:before {
+        width: 100%;
+      }
+      .butten_1_1 span:hover:after {
+        width: 100%;
+      }
+    </style>
+  </header>
+  <body>
+    <div class="background_1_1">
+      <div class="title_1_1"><br /><br />가장 간편한</div>
+      <div class="title_1_2">
+        가상 데스크톱 서비스
+        <div class="text_1">
+          <br />사용자가 필요로 하는 서버를 가장 간편하게 구축할 수 있습니다.<br />웹
+          페이지 환경에서 가상 서버를 생성하고 이를 활용하세요.
+        </div>
+      </div>
+      <button class="custom-button butten_1_1">
+        <span>가상 데스크톱 생성</span>
+      </button>
+    </div>
+  </body>
+</html>
