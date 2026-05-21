@@ -1,0 +1,430 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Adult Cloud - Dashboard</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background-color: #f3f7fb;
+        color: #1f2937;
+        font-family: Arial, "Noto Sans KR", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button {
+        font-family: inherit;
+      }
+
+      .layout {
+        display: flex;
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        width: 230px;
+        padding: 24px 18px;
+        background-color: #ffffff;
+        border-right: 1px solid #dbe7f3;
+      }
+
+      .logo {
+        margin: 0 0 30px;
+        color: #2563eb;
+        font-size: 24px;
+        font-weight: 800;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .menu a {
+        padding: 12px 14px;
+        border-radius: 8px;
+        color: #64748b;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .menu a.active,
+      .menu a:hover {
+        color: #1d4ed8;
+        background-color: #eaf2ff;
+      }
+
+      .content {
+        flex: 1;
+        padding: 32px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        margin-bottom: 26px;
+      }
+
+      .title {
+        margin: 0;
+        font-size: 30px;
+      }
+
+      .subtitle {
+        margin: 8px 0 0;
+        color: #64748b;
+        font-size: 15px;
+      }
+
+      .primary-button {
+        height: 42px;
+        padding: 0 18px;
+        border: 0;
+        border-radius: 8px;
+        color: #ffffff;
+        background-color: #3b82f6;
+        font-size: 14px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+
+      .card,
+      .panel {
+        background-color: #ffffff;
+        border: 1px solid #dbe7f3;
+        border-radius: 10px;
+        box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .card-title {
+        margin: 0;
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .card-value {
+        margin: 12px 0 0;
+        font-size: 30px;
+        font-weight: 800;
+      }
+
+      .card-note {
+        margin: 8px 0 0;
+        color: #16a34a;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .main-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(280px, 0.8fr);
+        gap: 18px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .panel-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+
+      .panel-title {
+        margin: 0;
+        font-size: 19px;
+      }
+
+      .badge {
+        padding: 6px 10px;
+        border-radius: 999px;
+        color: #166534;
+        background-color: #dcfce7;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .server-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .server-item {
+        display: grid;
+        grid-template-columns: minmax(150px, 1fr) 110px 110px 80px;
+        align-items: center;
+        gap: 14px;
+        padding: 14px;
+        border: 1px solid #e2edf8;
+        border-radius: 8px;
+        background-color: #fbfdff;
+      }
+
+      .server-name {
+        margin: 0;
+        font-size: 15px;
+        font-weight: 800;
+      }
+
+      .server-info {
+        margin: 5px 0 0;
+        color: #64748b;
+        font-size: 13px;
+      }
+
+      .metric {
+        color: #475569;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .bar {
+        height: 7px;
+        margin-top: 7px;
+        border-radius: 999px;
+        background-color: #e5edf6;
+        overflow: hidden;
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        border-radius: 999px;
+        background-color: #60a5fa;
+      }
+
+      .connect-button {
+        height: 34px;
+        border: 1px solid #bfdbfe;
+        border-radius: 8px;
+        color: #1d4ed8;
+        background-color: #eff6ff;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .history-item {
+        padding: 14px;
+        border: 1px solid #e2edf8;
+        border-radius: 8px;
+        background-color: #fbfdff;
+      }
+
+      .history-item strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 14px;
+      }
+
+      .history-item span {
+        color: #64748b;
+        font-size: 13px;
+      }
+
+      @media (max-width: 1000px) {
+        .layout {
+          display: block;
+        }
+
+        .sidebar {
+          width: 100%;
+          border-right: 0;
+          border-bottom: 1px solid #dbe7f3;
+        }
+
+        .menu {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+
+        .stats,
+        .main-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 700px) {
+        .content {
+          padding: 22px;
+        }
+
+        .topbar,
+        .panel-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .stats,
+        .main-grid,
+        .server-item {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h1 class="logo">Adult Cloud</h1>
+        <nav class="menu">
+          <a class="active" href="dashboard.html">대시보드</a>
+          <a href="#">서버 관리</a>
+          <a href="#">사용자</a>
+          <a href="#">설정</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <h2 class="title">가상 데스크톱 대시보드</h2>
+            <p class="subtitle">서버 상태, 사용량, 최근 기록을 한 곳에서 확인합니다.</p>
+          </div>
+          <button class="primary-button" type="button">새 데스크톱 생성</button>
+        </header>
+
+        <section class="stats">
+          <article class="card">
+            <p class="card-title">실행 중인 서버</p>
+            <p class="card-value">12</p>
+            <p class="card-note">모두 정상</p>
+          </article>
+          <article class="card">
+            <p class="card-title">CPU 평균</p>
+            <p class="card-value">38%</p>
+            <p class="card-note">안정 상태</p>
+          </article>
+          <article class="card">
+            <p class="card-title">메모리 사용량</p>
+            <p class="card-value">64%</p>
+            <p class="card-note">여유 있음</p>
+          </article>
+          <article class="card">
+            <p class="card-title">이번 달 트래픽</p>
+            <p class="card-value">1.8TB</p>
+            <p class="card-note">전월 대비 +8%</p>
+          </article>
+        </section>
+
+        <section class="main-grid">
+          <article class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">데스크톱 목록</h3>
+              <span class="badge">ONLINE</span>
+            </div>
+
+            <div class="server-list">
+              <div class="server-item">
+                <div>
+                  <p class="server-name">Design Desktop</p>
+                  <p class="server-info">Windows · Seoul</p>
+                </div>
+                <div class="metric">
+                  CPU 42%
+                  <div class="bar"><span style="width: 42%"></span></div>
+                </div>
+                <div class="metric">
+                  RAM 61%
+                  <div class="bar"><span style="width: 61%"></span></div>
+                </div>
+                <button class="connect-button" type="button">연결</button>
+              </div>
+
+              <div class="server-item">
+                <div>
+                  <p class="server-name">Office Workspace</p>
+                  <p class="server-info">Ubuntu · Tokyo</p>
+                </div>
+                <div class="metric">
+                  CPU 28%
+                  <div class="bar"><span style="width: 28%"></span></div>
+                </div>
+                <div class="metric">
+                  RAM 54%
+                  <div class="bar"><span style="width: 54%"></span></div>
+                </div>
+                <button class="connect-button" type="button">연결</button>
+              </div>
+
+              <div class="server-item">
+                <div>
+                  <p class="server-name">Render Node</p>
+                  <p class="server-info">Windows · Singapore</p>
+                </div>
+                <div class="metric">
+                  CPU 73%
+                  <div class="bar"><span style="width: 73%"></span></div>
+                </div>
+                <div class="metric">
+                  RAM 70%
+                  <div class="bar"><span style="width: 70%"></span></div>
+                </div>
+                <button class="connect-button" type="button">연결</button>
+              </div>
+            </div>
+          </article>
+
+          <aside class="panel">
+            <div class="panel-header">
+              <h3 class="panel-title">최근 기록</h3>
+              <span class="badge">LOG</span>
+            </div>
+
+            <div class="history-list">
+              <div class="history-item">
+                <strong>Design Desktop 연결 완료</strong>
+                <span>2분 전 · 관리자</span>
+              </div>
+              <div class="history-item">
+                <strong>Render Node CPU 사용량 증가</strong>
+                <span>18분 전 · 시스템</span>
+              </div>
+              <div class="history-item">
+                <strong>Office Workspace 자동 백업 완료</strong>
+                <span>1시간 전 · 백업 서버</span>
+              </div>
+              <div class="history-item">
+                <strong>새 사용자 계정 생성</strong>
+                <span>3시간 전 · 관리자</span>
+              </div>
+            </div>
+          </aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
